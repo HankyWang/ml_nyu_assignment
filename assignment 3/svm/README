@@ -1,0 +1,71 @@
+Matlab Support Vector Machine Toolbox
+-------------------------------------
+
+Author: Steve Gunn
+
+This toolbox was designed as a teaching aid, which matlab is
+particularly good for since source code is relatively legible and
+simple to modify. However, it is still reasonably fast if used
+with the supplied optimiser. However, if you really want to speed
+things up you should consider compiling the matrix composition
+routine for H into a mex function. Then again if you really want
+to speed things up you probably shouldn't be using matlab
+anyway... Get hold of a dedicated C program once you understand
+the algorithm.
+
+Enjoy!
+
+Version Info
+------------
+
+Version: 2.1, 12/10/2001 - interior point QP optimiser added
+Version: 2.0, 01/08/1998 - Bug Fixes
+Version: 1.0, 10/02/1998 - Initial release
+
+Licence
+-------
+
+The Support Vector Machine Toolbox is ONLY available for academic
+purposes. It is not available for industrial or commercial
+applications of any kind without explicit arrangement with the
+author. The software must not be posted on any WWW or ftp sites or
+distributed in any other way without prior permission of the
+author. The author disclaims all warranties with regard to this
+software, including all implied warranties of merchantability and
+fitness. In no event shall the authors be liable for any special,
+indirect or consequential damages or any damages whatsoever
+resulting from loss of use, data or profits, whether in an action
+of contract, negligence or other tortious action, arising out of
+or in connection with the use or performance of this software.
+Permission to sell this software is not granted.
+
+Installation
+------------
+
+The distribution now comes in a zip file (partly due to some
+problems people were having trying to open tar files with winzip).
+Unzip the toolbox under the matlab toolbox directory and add
+
+  ......./matlab/toolbox/svm
+
+to the matlab path. If you are running under a windows OS you
+should be ready to go. On an alternative OS you will need to build
+the optimiser.
+
+NOTE: The matlab optimisation toolbox also currently contains a qp
+program, although it says that it will be replaced by a quadprog
+in the future. Make sure that the svm toolbox path comes before at
+the front of the matlab path, and it will then use the routine
+supplied with the svm toolbox which should be more efficient.
+
+Optimiser
+---------
+
+Go into the optimiser directory and type,
+
+  mex -v qp.c pr_loqo.c
+  mv qp.mex??? ..
+
+which will build the optimiser for your OS, where the extension
+.mex??? will vary depending upon your OS. Move this file up one
+directory or add the optimiser directory to the path as well
